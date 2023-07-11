@@ -4,14 +4,13 @@ import { useI18n } from 'vue-i18n'
 import type { Language } from '@/services/HttpService'
 import { useAppStore } from '@/stores/app'
 
-const { t, availableLocales } = useI18n({ useScope: 'global' })
-const appStore = useAppStore()
-const { language } = storeToRefs(appStore)
-
 interface AvaibleLocale {
   title: Language
   value: Language
 }
+const { t, availableLocales }: { t: any; availableLocales: AvaibleLocale[] } = useI18n({ useScope: 'global' })
+const appStore = useAppStore()
+const { language } = storeToRefs(appStore)
 
 const flags = {
   en: 'flags/UnitedStates.svg',
@@ -29,18 +28,23 @@ const flags = {
     v-bind="$attrs"
     variant="plain"
     density="compact"
+    :menu-props="{
+      eager: true,
+    }"
+    eager
     class="custom-input"
     style="max-width: 200px;"
+    data-test="language-selector"
   >
     <template #selection="{ item }">
-      <v-list-item :title="t(item.value)">
+      <v-list-item :value="item.value" :title="t(item.value)" data-test="selected-language">
         <template #prepend>
           <v-avatar size="32" :image="flags[item.value]" />
         </template>
       </v-list-item>
     </template>
     <template #item="{ item }">
-      <v-list-item :title="t(item.value)" @click="language = item.value">
+      <v-list-item :title="t(item.value)" :value="item.value" data-test="selected-language-option" @click="language = item.value">
         <template #prepend>
           <v-avatar size="32" :image="flags[item.value]" />
         </template>

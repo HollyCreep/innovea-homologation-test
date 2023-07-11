@@ -10,7 +10,7 @@ const appStore = useAppStore()
 
 const placeholder = 'placeholder-image.png'
 
-const imageProps: Record<ViewMode, Object> = {
+const imageProps: Record<ViewMode, object> = {
   grid: {
     'height': 200,
     'max-height': 200,
