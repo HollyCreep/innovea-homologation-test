@@ -13,6 +13,10 @@ export default mergeConfig(
       transformMode: {
         web: [/\.[jt]sx$/],
       },
+      deps: {
+        inline: ['vuetify'],
+      },
+      setupFiles: ['vitest.setup.ts'],
     },
   }),
 )
