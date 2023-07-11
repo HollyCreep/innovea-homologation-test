@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-export type Source = {
+export interface Source {
   id: string
   name: string
 }
 
-export type Article = {
+export interface Article {
   source: Source
   author: string
   title: string
@@ -16,13 +16,13 @@ export type Article = {
   content: string
 }
 
-export type ResponseError = {
+export interface ResponseError {
   status: 'error'
   code: string
   message: string
 }
 
-export type ResponseSuccess = {
+export interface ResponseSuccess {
   status: 'ok'
   totalResults: number
   articles: Article[]
@@ -32,7 +32,7 @@ export type Response = ResponseError | ResponseSuccess
 
 export type SearchType = 'title' | 'description' | 'content'
 
-export type Languege =
+export type Language =
   | 'ar'
   | 'de'
   | 'en'
@@ -50,7 +50,7 @@ export type Languege =
 
 export type SortBy = 'relevancy' | 'popularity' | 'publishedAt'
 
-export type Params = {
+export interface Params {
   q: string
   searchIn?: SearchType
   sources?: string
@@ -58,7 +58,7 @@ export type Params = {
   excludeDomains?: string
   from?: Date
   to?: Date
-  language?: Languege
+  language?: Language
   sortBy?: SortBy
   pageSize?: number
   page?: number
@@ -68,19 +68,19 @@ export default class HttpService {
   private instance = axios.create({
     baseURL: 'https://newsapi.org/v2',
     params: {
-      apiKey: '46c1fe6391a34cd4b098cb5298778361'
-    }
+      apiKey: '46c1fe6391a34cd4b098cb5298778361',
+    },
   })
 
   getAllArticles = (params: Params) => {
     return this.instance.get<Response>('/everything', {
-      params
+      params,
     })
   }
 
   getTopHeadlinesArticles = (params: Params): Promise<Response> => {
     return this.instance.get('/top-headlines', {
-      params
+      params,
     })
   }
 }

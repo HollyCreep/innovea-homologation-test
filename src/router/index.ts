@@ -7,14 +7,14 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
     },
     {
       path: '/pagination',
       name: 'pagination',
-      component: () => import('../views/PaginationView.vue')
-    }
-  ]
+      component: () => import('../views/PaginationView.vue'),
+    },
+  ],
 })
 
 export default router

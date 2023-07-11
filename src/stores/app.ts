@@ -1,18 +1,37 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { useTheme } from 'vuetify'
+import { useI18n } from 'vue-i18n'
+import { watch } from 'vue'
+import { usePreferredDark, usePreferredLanguages, useSessionStorage } from '@vueuse/core'
+import type { Language } from '@/services/HttpService'
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
+export type Theme = 'light' | 'dark'
+export type ViewMode = 'list' | 'grid'
 
-  function toggleTheme() {
-    const theme = useTheme()
-    theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-  }
+export const useAppStore = defineStore('app', () => {
+  const { locale } = useI18n({ useScope: 'global' })
 
-  return { toggleTheme }
+  const preferredLanguage = usePreferredLanguages().value.reduce((prev, current) => {
+    if (['en', 'es', 'pt'].includes(current))
+      prev.push(current as Language)
+    else if (current === 'pt-BR')
+      prev.push('pt')
+
+    return prev
+  }, [] as Language[])
+
+  const language = useSessionStorage<Language>('language', preferredLanguage?.[0] || 'en', {
+    mergeDefaults: true,
+  })
+  const theme = useSessionStorage<Theme>('theme', usePreferredDark() ? 'dark' : 'light')
+  const viewMode = useSessionStorage<ViewMode>('viewMode', 'list')
+
+  watch(
+    () => language.value,
+    (newValue) => {
+      locale.value = newValue
+    },
+    { immediate: true },
+  )
+
+  return { language, theme, viewMode }
 })

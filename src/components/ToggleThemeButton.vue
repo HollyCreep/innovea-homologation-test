@@ -1,25 +1,44 @@
-<template>
-  <v-btn class="toggle-theme" icon @click="toggleTheme">
-    <v-img width="28" height="28" class="sun" :class="{ 'active': theme.name.value === 'light' }" :src="LightThemeIcon"
-      contain></v-img>
-    <v-img width="28" height="28" class="moon" :class="{ 'active': theme.name.value === 'dark' }" :src="DarkThemeIcon"
-      contain></v-img>
-  </v-btn>
-</template>
-
 <script lang="ts" setup>
-
 import { useTheme } from 'vuetify'
+import { onMounted } from 'vue'
 import LightThemeIcon from '@/assets/icons/light-theme.svg'
 import DarkThemeIcon from '@/assets/icons/dark-theme.svg'
+import { useAppStore } from '@/stores/app'
 
 const theme = useTheme()
+const appStore = useAppStore()
 
-const toggleTheme = () => {
-  theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+function toggleTheme() {
+  const newTheme = theme.global.current.value.dark ? 'light' : 'dark'
+  theme.global.name.value = newTheme
+  appStore.theme = newTheme
 }
+
+onMounted(() => {
+  theme.global.name.value = appStore.theme
+})
 </script>
 
+<template>
+  <v-btn class="toggle-theme" icon @click="toggleTheme">
+    <v-img
+      width="28"
+      height="28"
+      class="sun"
+      :class="{ active: appStore.theme === 'dark' }"
+      :src="LightThemeIcon"
+      contain
+    />
+    <v-img
+      width="28"
+      height="28"
+      class="moon"
+      :class="{ active: appStore.theme === 'light' }"
+      :src="DarkThemeIcon"
+      contain
+    />
+  </v-btn>
+</template>
 
 <style lang="scss" scoped>
 .toggle-theme {
