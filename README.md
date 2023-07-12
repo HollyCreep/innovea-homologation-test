@@ -42,7 +42,7 @@ $ npm run dev
 
 ### Theme variants
 <div width="100%">
-<img width="100%" src="https://i.ibb.co/qrX60Rj/preview.jpg" alt="preview" border="0" >
-<img width="100%" src="https://i.ibb.co/8XbmmGd/preview.jpg" alt="preview" border="0" >
+<img src="https://i.ibb.co/qrX60Rj/preview.jpg" alt="preview" border="0" >
+<img src="https://i.ibb.co/8XbmmGd/preview.jpg" alt="preview" border="0" >
 </div>
 
