@@ -36,15 +36,19 @@ const imageProps: Record<ViewMode, object> = {
 
     <div class="d-flex flex-column fill-height">
       <v-card-item>
-        <v-card-title>{{ title }}</v-card-title>
-        <v-card-subtitle>{{ author }}</v-card-subtitle>
+        <v-card-title data-test="title">
+          {{ title }}
+        </v-card-title>
+        <v-card-subtitle data-test="author">
+          {{ author }}
+        </v-card-subtitle>
       </v-card-item>
 
-      <v-card-text class="flex-grow-1">
+      <v-card-text class="flex-grow-1" data-test="description">
         {{ description }}
       </v-card-text>
 
-      <v-btn class="ml-auto" color="primary" variant="text" target="_blank" :href="url">
+      <v-btn class="ml-auto" color="primary" variant="text" target="_blank" :href="url" data-test="button">
         {{ t('view_more') }}
       </v-btn>
     </div>

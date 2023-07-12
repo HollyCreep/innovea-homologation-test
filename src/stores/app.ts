@@ -22,7 +22,7 @@ export const useAppStore = defineStore('app', () => {
   const language = useSessionStorage<Language>('language', preferredLanguage?.[0] || 'en', {
     mergeDefaults: true,
   })
-  const theme = useSessionStorage<Theme>('theme', usePreferredDark() ? 'dark' : 'light')
+  const theme = useSessionStorage<Theme>('theme', usePreferredDark().value ? 'dark' : 'light')
   const viewMode = useSessionStorage<ViewMode>('viewMode', 'list')
 
   watch(

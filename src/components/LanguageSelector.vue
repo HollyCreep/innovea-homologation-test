@@ -28,23 +28,19 @@ const flags = {
     v-bind="$attrs"
     variant="plain"
     density="compact"
-    :menu-props="{
-      eager: true,
-    }"
-    eager
     class="custom-input"
     style="max-width: 200px;"
     data-test="language-selector"
   >
     <template #selection="{ item }">
-      <v-list-item :value="item.value" :title="t(item.value)" data-test="selected-language">
+      <v-list-item :title="t(item.value)">
         <template #prepend>
           <v-avatar size="32" :image="flags[item.value]" />
         </template>
       </v-list-item>
     </template>
     <template #item="{ item }">
-      <v-list-item :title="t(item.value)" :value="item.value" data-test="selected-language-option" @click="language = item.value">
+      <v-list-item :title="t(item.value)" @click="language = item.value">
         <template #prepend>
           <v-avatar size="32" :image="flags[item.value]" />
         </template>

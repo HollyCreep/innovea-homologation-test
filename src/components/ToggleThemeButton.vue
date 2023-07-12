@@ -25,7 +25,7 @@ onMounted(() => {
       width="28"
       height="28"
       class="sun"
-      :class="{ active: appStore.theme === 'dark' }"
+      :class="{ hide: appStore.theme === 'dark' }"
       :src="LightThemeIcon"
       contain
     />
@@ -33,7 +33,7 @@ onMounted(() => {
       width="28"
       height="28"
       class="moon"
-      :class="{ active: appStore.theme === 'light' }"
+      :class="{ hide: appStore.theme === 'light' }"
       :src="DarkThemeIcon"
       contain
     />
@@ -55,7 +55,7 @@ onMounted(() => {
     opacity: 0;
     transform: translateX(50px);
 
-    &:not(.active) {
+    &:not(.hide) {
       opacity: 1;
       transform: translateX(0px);
     }
@@ -66,7 +66,7 @@ onMounted(() => {
     transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease;
     transform: translateX(0px);
 
-    &.active {
+    &.hide {
       opacity: 0;
       transform: translateX(-50px);
     }

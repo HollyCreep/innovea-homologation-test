@@ -10,6 +10,7 @@ const Vuetify = createVuetify({
   components,
   directives,
   theme: {
+    defaultTheme: 'light',
     themes: {
       light: {
         colors: {
