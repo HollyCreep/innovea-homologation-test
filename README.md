@@ -1,52 +1,48 @@
 # innovea-homologation-test
 
-This template should help get you started developing with Vue 3 in Vite.
+#### Built with:
+<div>
+    <img src="https://img.shields.io/badge/Vue.js-35495E?logo=vuedotjs&logoColor=4FC08D" />
+    <img src="https://img.shields.io/badge/Vuetify-1867C0?logo=vuetify&logoColor=AEDDFF"/>&nbsp;
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white" />
+    <img src="https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white" />
+    <img src="https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white" />
+</div>
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- Type safe
+- Unit tests
+- Dark mode
+- Translations
+- Infinite Scrolling
+- Responsive Layout
+- Persistence of user settings
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Build Setup
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+```bash
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+From Node v14.21.1
 
-## Customize configuration
+# install dependencies
+$ npm run install
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+# Developement mode with hot reload
+$ npm run dev
 
-## Project Setup
 
-```sh
-npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Running Tests
 
-```sh
-npm run dev
-```
+```npm run test:unit```
 
-### Type-Check, Compile and Minify for Production
 
-```sh
-npm run build
-```
+### Theme variants
+<div width="100%">
+<img src="https://i.ibb.co/qrX60Rj/preview.jpg" alt="preview" border="0" >
+<img src="https://i.ibb.co/8XbmmGd/preview.jpg" alt="preview" border="0" >
+</div>
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
