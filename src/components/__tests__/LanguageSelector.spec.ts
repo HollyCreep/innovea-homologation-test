@@ -20,15 +20,14 @@ describe('LanguageSelector', () => {
   })
 
   it('should has initial value of default', () => {
-    // TODO
     const wrapper = mount(LanguageSelector)
     expect(wrapper.text()).toBe('English')
   })
 
   it('should change language on selection', async () => {
-    const wrapper = mount(LanguageSelector)
+    const wrapper = mount(LanguageSelector);
 
-    wrapper.vm.language = 'pt'
+    (wrapper.vm as any).language = 'pt'
 
     await wrapper.vm.$nextTick()
 
