@@ -9,11 +9,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
-    {
-      path: '/pagination',
-      name: 'pagination',
-      component: () => import('../views/PaginationView.vue'),
-    },
   ],
 })
 
